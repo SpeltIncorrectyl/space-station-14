@@ -1,0 +1,33 @@
+- type: entity
+  id: WallMountFlasher
+  name: wall-mounted flasher
+  description: A wall-mounted casing for a flash, preventing burnout and improving performance, at the cost of portability.
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wallmount
+  components:
+  - type: WallMount
+    arc: 360
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Physics
+    canCollide: false
+  - type: Sprite
+    drawdepth: SmallObjects
+    sprite: Structures/Wallmounts/flash.rsi
+    layers:
+    - state: base
+      map: [ "enum.WallFlashVisualLayers.BaseLayer" ]
+    - state: lights
+      map: [ "enum.WallFlashVisualLayers.LightLayer" ]
+      shader: unshaded
+    - state: bulb
+      map: [ "enum.WallFlashVisualLayers.BulbLayer" ]
+    - state: flashing
+      map: [ "enum.WallFlashVisualLayers.FlashLayer" ]
+      visible: false
+      shader: unshaded
+    state: on
+  - type: Rotatable
+  - type: Fixtures

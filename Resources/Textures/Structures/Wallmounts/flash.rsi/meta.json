@@ -1,0 +1,29 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from tgstation at commit c34d56a45b0461f5e0fad3cc75e81580c3357119.",
+    "states": [
+        {
+            "name": "base"
+        },
+        {
+            "name": "lights",
+            "delays": [
+                [0.3, 0.3]
+            ]
+        },
+        {
+            "name":  "bulb"
+        },
+        {
+            "name":  "flashing",
+            "delays": [
+                [0.2, 0.2]
+            ]
+        }
+    ]
+}
