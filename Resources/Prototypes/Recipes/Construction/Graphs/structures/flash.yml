@@ -1,0 +1,39 @@
+- type: constructionGraph
+  id: WallMountFlasher
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: assembly
+      steps:
+      - material: Steel
+        amount: 1
+        doAfter: 1
+
+  - node: assembly
+    entity: WallMountFlasherAssembly
+    actions:
+    - !type:AppearanceChange
+    edges:
+    - to: assembly-circuit
+      steps:
+      - tool: Screwing
+        doAfter: 1
+
+  - node: assembly-circuit
+    entity: WallMountFlasherAssembly
+    actions:
+    - !type:AppearanceChange
+    edges:
+    - to: flasher
+      steps:
+      - component: Flash
+        store: flash-slot
+        name: "flash"
+        icon:
+          sprite: "Objects/Weapons/Melee/flash.rsi"
+          state: "flash"
+        doAfter: 1
+
+  - node: flasher
+    entity: WallMountFlasher

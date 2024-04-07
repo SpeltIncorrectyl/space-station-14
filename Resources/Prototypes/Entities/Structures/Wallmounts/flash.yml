@@ -1,7 +1,7 @@
 - type: entity
-  id: WallMountFlasher
-  name: wall-mounted flasher
-  description: A wall-mounted casing for a flash, preventing burnout and improving performance, at the cost of portability.
+  id: WallMountFlasherAssembly
+  name: wall-mounted flasher assembly
+  description: A assembly for a wall-mounted flasher.
   placement:
     mode: SnapgridCenter
     snap:
@@ -18,6 +18,42 @@
     sprite: Structures/Wallmounts/flash.rsi
     layers:
     - state: base
+      map: [ "enum.WallFlashVisualLayers.BaseLayer" ] 
+    - state: lights
+      map: [ "enum.ConstructionVisuals.Layer" ]
+      shader: unshaded
+      visible: false
+  - type: GenericVisualizer
+    visuals:
+      enum.ConstructionVisuals.Key:
+        enum.ConstructionVisuals.Layer:
+          assembly: {visible: false}
+          assembly-circuit: {visible: true}
+  - type: Rotatable
+  - type: Fixtures
+  - type: Construction
+    graph: WallMountFlasher
+    node: assembly
+  - type: ContainerContainer
+    containers:
+      flash-slot: !type:Container
+
+- type: entity
+  id: WallMountFlasher
+  name: wall-mounted flasher
+  parent: WallMountFlasherAssembly
+  description: A wall-mounted casing for a flash, preventing burnout and improving performance, at the cost of portability.
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wallmount
+  components:
+  - type: Construction
+    graph: WallMountFlasher
+    node: assembly
+  - type: Sprite
+    layers:
+    - state: base
       map: [ "enum.WallFlashVisualLayers.BaseLayer" ]
     - state: lights
       map: [ "enum.WallFlashVisualLayers.LightLayer" ]
@@ -26,8 +62,5 @@
       map: [ "enum.WallFlashVisualLayers.BulbLayer" ]
     - state: flashing
       map: [ "enum.WallFlashVisualLayers.FlashLayer" ]
-      visible: false
       shader: unshaded
-    state: on
-  - type: Rotatable
-  - type: Fixtures
+      visible: false

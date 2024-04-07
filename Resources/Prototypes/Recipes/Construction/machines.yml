@@ -62,6 +62,24 @@
     - !type:WallmountCondition
 
 - type: construction
+  name: wall mounted flasher
+  id: WallMountFlasher
+  graph: WallMountFlasher
+  startNode: start
+  targetNode: flasher
+  category: construction-category-machines
+  description: A powerful flasher affixed to a wall.
+  icon:
+    sprite: Structures/Wallmounts/flash.rsi
+    state: base
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: true
+  conditions:
+  - !type:WallmountCondition
+
+- type: construction
   name: signal switch
   id: SignalSwitchRecipe
   graph: SignalSwitchGraph
