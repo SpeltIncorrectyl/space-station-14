@@ -56,15 +56,15 @@ public sealed class ChasmSystem : EntitySystem
         StartFalling(uid, component, args.Tripper);
     }
 
-    public void StartFalling(EntityUid chasm, ChasmComponent component, EntityUid tripper, bool playSound = true)
+    public void StartFalling(EntityUid? chasm, ChasmComponent? component, EntityUid tripper, bool playSound = true)
     {
         var falling = AddComp<ChasmFallingComponent>(tripper);
 
         falling.NextDeletionTime = _timing.CurTime + falling.DeletionTime;
         _blocker.UpdateCanMove(tripper);
 
-        if (playSound)
-            _audio.PlayPredicted(component.FallingSound, chasm, tripper);
+        if (playSound && chasm is not null && component is not null)
+            _audio.PlayPredicted(component.FallingSound, chasm.Value, tripper);
     }
 
     private void OnStepTriggerAttempt(EntityUid uid, ChasmComponent component, ref StepTriggerAttemptEvent args)
