@@ -1,7 +1,6 @@
-using Content.Shared.Squish;
 using Robust.Shared.Containers;
 
-namespace Content.Server.Squish;
+namespace Content.Shared.Squish;
 
 /// <summary>
 /// Animates a squish effect when containers with SquishOnInventoryUsedComponent are used.

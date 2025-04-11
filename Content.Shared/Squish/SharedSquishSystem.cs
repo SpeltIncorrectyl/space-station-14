@@ -14,7 +14,6 @@ public class SharedSquishSystem: EntitySystem
     /// <param name="magnitude">Magnitude of the squish as a percentage of maximum deformation.</param>
     public void Squish(EntityUid uid, TimeSpan duration, double magnitude)
     {
-        Log.Debug("squished");
         var comp = new SquishComponent {SquishStart = Timing.CurTime, SquishDuration = duration, SquishMagnitude = magnitude};
         AddComp(uid, comp, true);
     }
@@ -47,7 +46,6 @@ public class SharedSquishSystem: EntitySystem
 
             if (Timing.CurTime > squishComp.SquishStart + squishComp.SquishDuration)
             {
-                Log.Debug("unsquished");
                 FullyUnsquish((uid, squishComp));
                 RemComp<SquishComponent>(uid);
             }
