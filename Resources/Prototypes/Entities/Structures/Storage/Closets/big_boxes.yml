@@ -86,6 +86,19 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
 
+- type: entity
+  id: BigBoxSec
+  parent: [BigBox, BaseSecurityContraband]
+  name: Tactical Transport Box
+  description: An expensive box built out of corrugated fibreboard, used for the transport of tactical squads. Not to be used for shipping.
+  components:
+  - type: Sprite
+    layers:
+    - state: cardboard_sec
+      map: [ "enum.StorageVisualLayers.Base" ]
+    - state: cardboard_open
+      map: [ "enum.StorageVisualLayers.Door" ]
+
 
 #For admin spawning only
 - type: entity
