@@ -1,0 +1,14 @@
+- type: gameMap
+  id: EscapePod
+  mapName: Escape Pod
+  mapPath: /Maps/Test/empty.yml
+  minPlayers: 0
+  stations:
+    Empty:
+      stationProto: StandardNanotrasenStation
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: "Escape Pod"
+      - type: StationJobs
+        availableJobs:
+          Survivor: [ -1, -1 ]

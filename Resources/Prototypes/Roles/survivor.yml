@@ -1,0 +1,20 @@
+- type: job
+  id: Survivor
+  name: job-name-survivor
+  icon: "JobIconPassenger"
+  playTimeTracker: JobSurvivor
+  description: job-description-survivor
+  startingGear: SurvivorGear
+
+
+- type: startingGear
+  id: SurvivorGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorGrey
+    back: ClothingBackpack
+    shoes: ClothingShoesColorBlack
+    ears: ClothingHeadsetGrey
+  storage:
+    back:
+    - SurvivalKnife
+    - Pickaxe

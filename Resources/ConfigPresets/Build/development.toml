@@ -1,7 +1,7 @@
 ﻿[game]
 # Straight in-game baby
 # Dev map for faster loading & convenience
-map = "Empty"
+map = "EscapePod"
 role_timers = false
 role_loadout_timers = false
 defaultpreset = "wilderness"

@@ -101,6 +101,9 @@
   id: JobPassenger
 
 - type: playTimeTracker
+  id: JobSurvivor
+
+- type: playTimeTracker
   id: JobParamedic
 
 - type: playTimeTracker

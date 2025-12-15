@@ -32,6 +32,15 @@
   - ServiceWorker
 
 - type: department
+  id: Crashlanded
+  name: department-Crashlanded
+  description: department-Crashlanded-description
+  color: "#9FED58"
+  weight: 200
+  roles:
+  - Survivor
+
+- type: department
   id: CentralCommand
   name: department-CentralCommand
   description: department-CentralCommand-description
