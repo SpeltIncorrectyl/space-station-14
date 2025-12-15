@@ -1,10 +1,10 @@
 ﻿[game]
 # Straight in-game baby
-lobbyenabled = false
 # Dev map for faster loading & convenience
-map = "Dev"
+map = "Empty"
 role_timers = false
 role_loadout_timers = false
+defaultpreset = "wilderness"
 
 [events]
 enabled = false

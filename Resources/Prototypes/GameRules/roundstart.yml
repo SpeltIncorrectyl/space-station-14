@@ -330,6 +330,13 @@
   - type: SandboxRule
 
 - type: entity
+  id: PlanetBound
+  parent: BaseGameRule
+  components:
+  - type: PlanetBoundRule
+    biome: Grasslands
+
+- type: entity
   id: Secret
   parent: BaseGameRule
   components:
