@@ -138,6 +138,15 @@
     - Sandbox
 
 - type: gamePreset
+  id: WildernessSurvival
+  alias:
+  - wilderness
+  name: wilderness-survival-title
+  description: wilderness-survival-description
+  rules:
+  - PlanetBound
+
+- type: gamePreset
   id: Traitor
   alias:
     - traitor
