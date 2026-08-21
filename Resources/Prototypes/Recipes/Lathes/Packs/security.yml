@@ -56,7 +56,7 @@
   id: SecurityWeaponsStatic
   recipes:
   - Flash
-  - Stunbaton
+  - Truncheon
   - CombatKnife
   - RiotShield
 
@@ -127,7 +127,6 @@
 - type: latheRecipePack
   id: SecurityWeapons
   recipes:
-  - Truncheon
   - WeaponAdvancedLaser
   - WeaponLaserCannon
   - WeaponLaserCarbine

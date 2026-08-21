@@ -34,7 +34,7 @@
         children:
         - id: WeaponDisabler
           amount: 3
-        - id: Stunbaton
+        - id: Truncheon
           amount: 3
         - id: BoxFlashbang
         - id: Flash

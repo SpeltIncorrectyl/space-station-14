@@ -41,7 +41,7 @@
         - BoxFlashbang
         - TearGasGrenade
         - WeaponDisabler
-        - Stunbaton
+        - Truncheon
       rareChance: 0.05
       prototypes:
         - Flash

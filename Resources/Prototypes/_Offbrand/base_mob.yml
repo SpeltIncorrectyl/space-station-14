@@ -11,7 +11,7 @@
   - type: WoundRegeneration
     damage:
       types:
-        Blunt: -0.5
+        Blunt: -10
         Piercing: -0.5
         Slash: -0.5
         Heat: -0.5
