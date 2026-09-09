@@ -3,7 +3,6 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
-using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Suicide;
 using Content.Shared.Verbs;
@@ -21,7 +20,6 @@ public sealed partial class ExecutionSystem : EntitySystem
     [Dependency] private ActionBlockerSystem _actionBlocker = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedSuicideSystem _suicide = default!;
     [Dependency] private DamageableSystem _damage = default!;
@@ -99,7 +97,7 @@ public sealed partial class ExecutionSystem : EntitySystem
         if (sound is not null)
             _audio.PlayPredicted(sound, victim, user);
 
-        if (damage is null)
+        if (damage is null || damage.GetTotal() <= 0)
             return;
 
         if (forceKill)
