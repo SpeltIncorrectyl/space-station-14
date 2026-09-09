@@ -8,8 +8,6 @@
   - type: Tool
     qualities:
     - Slicing
-  - type: Execution
-    doAfterDuration: 4.0
   - type: Sprite
     layers:
       - sprite: Objects/Materials/Shards/crystal-shard.rsi

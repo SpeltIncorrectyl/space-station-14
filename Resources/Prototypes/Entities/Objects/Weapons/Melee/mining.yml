@@ -90,8 +90,6 @@
   - type: Tool
     qualities:
     - Slicing
-  - type: Execution
-    doAfterDuration: 4.0
   - type: UnpoweredFlashlight
   - type: PointLight
     color: "#ffeead"

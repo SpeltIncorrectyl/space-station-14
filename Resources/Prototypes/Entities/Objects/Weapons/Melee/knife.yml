@@ -6,8 +6,6 @@
   - type: Tag
     tags:
     - Knife
-  - type: Execution
-    doAfterDuration: 4.0
   - type: Utensil
     types:
       - Knife
@@ -415,8 +413,6 @@
   - type: Appearance
   - type: ComponentToggler
     components:
-    - type: Execution
-      doAfterDuration: 4.0
     - type: Utensil
       types:
       - Knife

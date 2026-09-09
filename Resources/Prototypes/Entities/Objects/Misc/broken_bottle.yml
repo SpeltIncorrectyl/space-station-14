@@ -7,8 +7,6 @@
   - type: Tool
     qualities:
     - Slicing
-  - type: Execution
-    doAfterDuration: 4.0
   - type: MeleeWeapon
     attackRate: 1.5
     damage:

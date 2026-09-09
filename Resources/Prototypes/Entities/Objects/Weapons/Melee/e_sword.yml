@@ -19,8 +19,6 @@
       - Slicing
     - type: DisarmMalus
       malus: 0.6
-    - type: Execution
-      doAfterDuration: 4.0
   - type: ItemToggleHot
   - type: ItemToggleSize
     activatedSize: Huge
@@ -135,8 +133,6 @@
       - Slicing
     - type: DisarmMalus
       malus: 0.4
-    - type: Execution
-      doAfterDuration: 4.0
   - type: Sprite
     sprite: Objects/Weapons/Melee/e_dagger_loud.rsi
     layers:
@@ -202,8 +198,6 @@
       - Slicing
     - type: DisarmMalus
       malus: 0.4
-    - type: Execution
-      doAfterDuration: 4.0
     - type: Contraband
       severity: Syndicate
   - type: Sprite
@@ -325,8 +319,6 @@
     components:
     - type: DisarmMalus
       malus: 0.7
-    - type: Execution
-      doAfterDuration: 4.0
     - type: Tool
       qualities:
       - Slicing
