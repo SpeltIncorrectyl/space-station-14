@@ -1,19 +1,12 @@
 using Content.Shared.ActionBlocker;
-using Content.Shared.CombatMode;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
-using Content.Shared.Database;
 using Content.Shared.DoAfter;
-using Content.Shared.IdentityManagement;
-using Content.Shared.Interaction.Events;
-using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Suicide;
 using Content.Shared.Verbs;
-using Content.Shared.Weapons.Melee;
-using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Serialization;
@@ -43,7 +36,8 @@ public sealed partial class ExecutionSystem : EntitySystem
     {
         // if the user can interact it means they are not cuffed or in crit
         // executing a guy who wasn't paying attention for a second is a no-go
-        if (_actionBlocker.CanInteract(victim, null))
+        // ignore this if you are executing yourself
+        if (_actionBlocker.CanInteract(victim, null) && user != victim)
             return false;
 
         var ev = new AttemptExecutionEvent();
@@ -59,6 +53,14 @@ public sealed partial class ExecutionSystem : EntitySystem
     {
         if (!CanExecute(user, victim, tool))
             return false;
+
+        string loc;
+        if (user == victim)
+            loc = tool.Comp.BeforeSelfExecutionMessage;
+        else
+            loc = tool.Comp.BeforeExecutionMessage;
+
+        _popup.PopupEntity(Loc.GetString(loc, ("attacker", user), ("victim", victim), ("tool", tool)), victim, PopupType.SmallCaution);
 
         _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, user, tool.Comp.ExecutionTime, new ExecutionDoAfterEvent(), tool)
         {
@@ -105,7 +107,14 @@ public sealed partial class ExecutionSystem : EntitySystem
             if (!TryComp<DamageableComponent>(victim, out var damageable))
                 return;
             _suicide.ApplyLethalDamage((victim, damageable), damage);
-            _popup.PopupEntity(tool.Comp.AfterExecutionMessage, victim, PopupType.MediumCaution);
+
+            string loc;
+            if (user == victim)
+                loc = tool.Comp.AfterSelfExecutionMessage;
+            else
+                loc = tool.Comp.AfterExecutionMessage;
+
+            _popup.PopupEntity(Loc.GetString(loc, ("attacker", user), ("victim", victim), ("tool", tool)), victim, PopupType.MediumCaution);
         }
         else
         {

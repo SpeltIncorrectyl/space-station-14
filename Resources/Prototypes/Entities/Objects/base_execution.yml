@@ -1,0 +1,17 @@
+- type: entity
+  id: BaseExecution
+  abstract: true
+  components:
+  - type: Execution
+    executionTime: 3.0
+
+- type: entity
+  parent: BaseExecution
+  id: BallisticExecution
+  abstract: true
+  components:
+  - type: Execution
+    beforeExecutionMessage: execution-before-popup-ballistic
+    beforeSelfExecutionMessage: execution-before-popup-ballistic-self
+    afterExecutionMessage: execution-after-popup-ballistic
+    afterSelfExecutionMessage: execution-after-popup-ballistic-self

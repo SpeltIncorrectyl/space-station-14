@@ -25,4 +25,16 @@ public sealed partial class ExecutionComponent : Component
     /// </summary>
     [DataField(required: true), AutoNetworkedField]
     public LocId AfterExecutionMessage;
+
+    /// <summary>
+    /// What message is popup-ed when the execution do-after begins, and the user is executing themselves?
+    /// </summary>
+    [DataField(required: true), AutoNetworkedField]
+    public LocId BeforeSelfExecutionMessage;
+
+    /// <summary>
+    /// What message is popup-ed when the self-execution successfully concludes and kills the user?
+    /// </summary>
+    [DataField(required: true), AutoNetworkedField]
+    public LocId AfterSelfExecutionMessage;
 }
