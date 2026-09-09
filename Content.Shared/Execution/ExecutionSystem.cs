@@ -145,7 +145,7 @@ public sealed partial class ExecutionSystem : EntitySystem
         args.Verbs.Add(new UtilityVerb
         {
             Act = () => TryStartExecution(user, target, tool),
-            Text = Loc.GetString("execution-verb-text"),
+            Text = Loc.GetString("execution-verb-name"),
             Message = Loc.GetString("execution-verb-message"),
         });
     }

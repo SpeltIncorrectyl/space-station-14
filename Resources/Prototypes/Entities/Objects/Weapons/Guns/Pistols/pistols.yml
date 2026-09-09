@@ -1,6 +1,6 @@
 - type: entity
   name: BasePistol
-  parent: [ BaseItem, BallisticExecution ]
+  parent: [BaseItem, BallisticExecution]
   id: BaseWeaponPistol
   description: A rooty tooty point and shooty.
   abstract: true

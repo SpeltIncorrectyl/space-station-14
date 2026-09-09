@@ -3,7 +3,7 @@
   abstract: true
   components:
   - type: Execution
-    executionTime: 3.0
+    executionTime: 4.0
 
 - type: entity
   parent: BaseExecution
@@ -15,3 +15,36 @@
     beforeSelfExecutionMessage: execution-before-popup-ballistic-self
     afterExecutionMessage: execution-after-popup-ballistic
     afterSelfExecutionMessage: execution-after-popup-ballistic-self
+
+- type: entity
+  parent: BaseExecution
+  id: LaserExecution
+  abstract: true
+  components:
+  - type: Execution
+    beforeExecutionMessage: execution-before-popup-laser
+    beforeSelfExecutionMessage: execution-before-popup-laser-self
+    afterExecutionMessage: execution-after-popup-laser
+    afterSelfExecutionMessage: execution-after-popup-laser-self
+
+- type: entity
+  parent: BaseExecution
+  id: SlashExecution
+  abstract: true
+  components:
+  - type: Execution
+    beforeExecutionMessage: execution-before-popup-slash
+    beforeSelfExecutionMessage: execution-before-popup-slash-self
+    afterExecutionMessage: execution-after-popup-slash
+    afterSelfExecutionMessage: execution-after-popup-slash-self
+
+- type: entity
+  parent: BaseExecution
+  id: PierceExecution
+  abstract: true
+  components:
+  - type: Execution
+    beforeExecutionMessage: execution-before-popup-pierce
+    beforeSelfExecutionMessage: execution-before-popup-pierce-self
+    afterExecutionMessage: execution-after-popup-pierce
+    afterSelfExecutionMessage: execution-after-popup-pierce-self
