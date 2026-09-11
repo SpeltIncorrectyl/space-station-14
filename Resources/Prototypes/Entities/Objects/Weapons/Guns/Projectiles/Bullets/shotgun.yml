@@ -19,6 +19,7 @@
   categories: [ HideSpawnMenu ]
   name: beanbag (.50)
   components:
+  - type: ForbidExecutionKill
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     layers:
@@ -82,6 +83,7 @@
   categories: [ HideSpawnMenu ]
   name: pellet (.50 practice)
   components:
+  - type: ForbidExecutionKill
   - type: Projectile
     damage:
       types:

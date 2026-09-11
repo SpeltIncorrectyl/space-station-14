@@ -82,7 +82,7 @@ public sealed partial class ExecutionSystem : EntitySystem
         if (!CanExecute(user, victim, tool))
             return false;
 
-        var ev = new BeforeExecutionEvent(user, victim);
+        var ev = new BeforeExecutionEvent(user, victim, new DamageSpecifier());
         RaiseLocalEvent(tool, ref ev);
 
         Execute(user, victim, tool, ev.Sound, ev.Damage, ev.ForceKill);
@@ -147,6 +147,12 @@ public sealed partial class ExecutionSystem : EntitySystem
             Message = Loc.GetString("execution-verb-message"),
         });
     }
+
+    [SubscribeLocalEvent]
+    private void OnExecution(Entity<ForbidExecutionKillComponent> entity, ref BeforeExecutionEvent args)
+    {
+        args.ForceKill = false;
+    }
 }
 
 /// <summary>
@@ -169,9 +175,10 @@ public record struct AttemptExecutionEvent(bool Cancelled = false);
 public record struct BeforeExecutionEvent(
     EntityUid User,
     EntityUid Victim,
+    DamageSpecifier Damage,
     SoundSpecifier? Sound = null,
-    DamageSpecifier? Damage = null,
-    bool ForceKill = true
+    bool ForceKill = true,
+    bool Handled = false
 );
 
 /// <summary>

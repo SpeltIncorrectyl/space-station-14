@@ -15,6 +15,7 @@
   categories: [ HideSpawnMenu ]
   name: bullet (.35 auto practice)
   components:
+  - type: ForbidExecutionKill
   - type: Projectile
     damage:
       types:

@@ -19,7 +19,11 @@ public sealed partial class GunExecutionSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnExecution(Entity<GunComponent> tool, ref BeforeExecutionEvent args)
     {
+        if (args.Handled)
+            return;
+
         args.Sound = tool.Comp.SoundEmpty;
+        args.Handled = true;
 
         var from = Transform(args.User).Coordinates;
         var ev = new TakeAmmoEvent(1, [], from, args.User);
@@ -29,48 +33,40 @@ public sealed partial class GunExecutionSystem : EntitySystem
         if (ev.Ammo.Count == 0)
             return;
 
-        var damage = new DamageSpecifier();
-        foreach (var (entity, shootable) in ev.Ammo)
+        foreach (var (entity, _) in ev.Ammo)
         {
             if (entity is { } shootableEntity)
-                HandleShootable(shootableEntity, shootable, ref damage);
+                RaiseLocalEvent(shootableEntity, ref args);
         }
 
         args.Sound = tool.Comp.SoundGunshot;
-        args.Damage = damage;
     }
 
-    private void HandleShootable(EntityUid entity, IShootable shootable, ref DamageSpecifier damage)
-    {
-        if (shootable is HitscanAmmoComponent hitscan)
-            HandleHitscan((entity, hitscan), ref damage);
-        else if (shootable is CartridgeAmmoComponent cartridge)
-            HandleCartridge((entity, cartridge), ref damage);
-        else if (shootable is AmmoComponent)
-            HandleProjectile(entity, ref damage);
-    }
-
-    private void HandleProjectile(EntityUid projectile, ref DamageSpecifier damage)
+    [SubscribeLocalEvent]
+    private void OnExecution(Entity<AmmoComponent> projectile, ref BeforeExecutionEvent args)
     {
         if (!TryComp<ProjectileComponent>(projectile, out var projectileComp))
             return;
 
-        damage += projectileComp.Damage;
+        args.Damage += projectileComp.Damage;
         Del(projectile);
     }
 
-    private void HandleCartridge(Entity<CartridgeAmmoComponent> cartridge, ref DamageSpecifier damage)
+    [SubscribeLocalEvent]
+    private void OnExecution(Entity<CartridgeAmmoComponent> cartridge, ref BeforeExecutionEvent args)
     {
         var projectile = Spawn(cartridge.Comp.Prototype);
-        HandleProjectile(projectile, ref damage);
+        RaiseLocalEvent(projectile, ref args);
+        _gun.SetCartridgeSpent(cartridge, cartridge.Comp, true);
     }
 
-    private void HandleHitscan(Entity<HitscanAmmoComponent> hitscan, ref DamageSpecifier damage)
+    [SubscribeLocalEvent]
+    private void OnExecution(Entity<HitscanAmmoComponent> hitscan, ref BeforeExecutionEvent args)
     {
         if (!TryComp<HitscanBasicDamageComponent>(hitscan, out var damageComp))
             return;
 
-        damage += damageComp.Damage;
+        args.Damage += damageComp.Damage;
         Del(hitscan);
     }
 }

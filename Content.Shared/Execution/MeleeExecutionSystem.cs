@@ -7,10 +7,14 @@ namespace Content.Shared.Execution;
 /// </summary>
 public sealed partial class MeleeExecutionSystem : EntitySystem
 {
-    [SubscribeLocalEvent]
+    [SubscribeLocalEvent(before: [typeof(GunExecutionSystem)])]
     private void OnExecution(Entity<MeleeWeaponComponent> tool, ref BeforeExecutionEvent args)
     {
+        if (args.Handled)
+            return;
+
         args.Sound = tool.Comp.HitSound;
         args.Damage = tool.Comp.Damage;
+        args.Handled = true;
     }
 }

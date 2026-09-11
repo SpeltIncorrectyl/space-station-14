@@ -32,6 +32,7 @@
   parent: Armblade
   id: ArmbladeDull
   components:
+  - type: ForbidExecutionKill
   - type: MeleeWeapon
     damage:
       types:
